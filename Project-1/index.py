@@ -9,7 +9,7 @@ print(data.head(10))
 # Check last 10 rows of the Dataset
 print(data.tail(10))
 
-# Check Null Vaalues In the Datasets
+# Check Null Values In the Datasets
 print(data.isnull())
 
 # Check the Datatype of Each Column
