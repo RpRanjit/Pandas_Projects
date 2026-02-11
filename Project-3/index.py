@@ -119,3 +119,38 @@ print(data[data['education'].isin(['Bachelors', 'Masters'])])
 
 
 # Bivariate analysis
+# Bivariate Analysis is the examination of the relationship between two variables in a dataset.
+
+print(data.columns)
+# sns.boxplot(x='income', y='age', data=data)
+# plt.show()
+
+# Replace Salary Values ['<=50K','>50K'] with 0 and 1
+print(data['income'].unique())
+print(data['income'].value_counts())
+
+# sns.countplot(x='income',data=data)
+# plt.show()
+
+def salary_indentation(income):
+    if income =='<=50K':
+        return 0
+    else:
+        return 1
+    
+data['encoded_income'] = data['income'].apply(salary_indentation)
+print(data.head(3))
+
+# Alternative method
+data.replace(to_replace=['<=50K' ,'>50K'], value=[0,1], inplace=True)
+
+# Which Workclass is getting the highest salary
+print(data.groupby('workclass')['income'].mean())
+print(data.groupby('workclass')['income'].mean().sort_values(ascending=False))
+
+# Who has better chance to get salary >=50K male or Female
+print(data.groupby('gender')['income'].mean().sort_values(ascending=False))
+
+# Convert workclass column datatypes to category datatypes
+data['workclass'] = data['workclass'].astype('category')
+print(data.info())
