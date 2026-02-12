@@ -110,10 +110,20 @@ print(data1.head(1))
 print(data.columns)
 print(data['Survived'].value_counts())
 
-sns.countplot(x ='Survived', data=data)
+sns.countplot(x ='Survived', data=data, palette='Set2')
 plt.show()
 # How Many Passengers Were In First Class, Second Class, and Third Class?
+print(data.columns)
+print(data['Pclass'].unique())
+print(data['Pclass'].value_counts())
+sns.countplot(x='Pclass', data=data, palette='pastel')
+plt.show()
+
 # Number of Male And Female Passengers
+print(data['Sex'].unique())
+print(data['Sex'].value_counts())
+sns.countplot(x='Sex', data=data, palette='Set1')
+plt.show()
 # 12. Bivariate Analysis
 # How Has Better Chance of Survival Male or Female?
 # Which Passenger Class Has Better Chance of Survival (First, Second, Or Third Class)? 
