@@ -49,7 +49,7 @@ print(data.isnull().sum())
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-sns.heatmap(data.isnull())
+# sns.heatmap(data.isnull())
 # plt.show()
 
 # /let find out the percentage of missing vlaues
@@ -92,3 +92,29 @@ print(data['Sex'].unique())
 gender = data['Sex'].map({'male':1, 'female': 0})
 data.insert(5, "Gender_New", gender)
 print(data)
+
+# if the unique data is more than 2 if is difficult to use map method so we use pandas get_dummies method
+# this method delete the original column and get the no of uniques column with 0, 1 values
+data1 = pd.get_dummies(data, columns=['Embarked'],drop_first=True, dtype=int)
+print(data1.head(1))
+
+# from observing the data we can say that after analysing Embarked_Q and Embaeked_S we can perdict the value of Embaeked_C because when in a row if both Q and S are 0  the C is 1 similiarly so we can drop C.
+
+
+
+
+
+# 11. What is Univariate Analysis?
+# one column at a time
+# How Many People Survived And How Many Died?
+print(data.columns)
+print(data['Survived'].value_counts())
+
+sns.countplot(x ='Survived', data=data)
+plt.show()
+# How Many Passengers Were In First Class, Second Class, and Third Class?
+# Number of Male And Female Passengers
+# 12. Bivariate Analysis
+# How Has Better Chance of Survival Male or Female?
+# Which Passenger Class Has Better Chance of Survival (First, Second, Or Third Class)? 
+# 13. Feature Engineering
