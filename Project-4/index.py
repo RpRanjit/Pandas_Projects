@@ -124,7 +124,24 @@ print(data['Sex'].unique())
 print(data['Sex'].value_counts())
 sns.countplot(x='Sex', data=data, palette='Set1')
 plt.show()
+
+
+
+
 # 12. Bivariate Analysis
 # How Has Better Chance of Survival Male or Female?
+sns.barplot(x='Sex', y='Survived', data=data, palette='Set3')
+plt.show()
+
 # Which Passenger Class Has Better Chance of Survival (First, Second, Or Third Class)? 
+sns.barplot(x='Pclass', y='Survived', data=data, palette='deep')
+plt.show()
+
 # 13. Feature Engineering
+# process of using domain knowledge to extract features from raw data
+print(data)
+# we will find the no of member of family using sibsp-siblibgs and parch- parent and children
+data['Family Size'] = data['SibSp'] + data['Parch']
+print(data.head(1))
+
+# fare perperson
